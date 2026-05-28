@@ -15,7 +15,7 @@
     }
   },
   "mounts": [
-    "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached"
+    "source=${localEnv:USERPROFILE}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached"
   ],
   "postCreateCommand": "node --version && claude --version"
 }
