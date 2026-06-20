@@ -10,28 +10,14 @@ Node.js と Claude Code がプリインストールされた開発コンテナ�
 
 ## セットアップ
 
-### 1. 環境変数の設定
-
-ローカルマシンに `ANTHROPIC_API_KEY` を設定してください。
-
-**Windows（PowerShell）:**
-```powershell
-[System.Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-...", "User")
-```
-
-**Mac/Linux:**
-```bash
-echo 'export ANTHROPIC_API_KEY="sk-ant-..."' >> ~/.bashrc
-```
-
-### 2. コンテナを起動
+### 1. コンテナを起動
 
 1. VS Code でこのフォルダを開く
 2. 右下に表示される **「Reopen in Container」** をクリック
    （または `Ctrl+Shift+P` → `Dev Containers: Reopen in Container`）
 3. コンテナのビルドが完了するまで待つ（初回は数分かかります）
 
-### 3. 動作確認
+### 2. 動作確認
 
 ターミナルで確認：
 ```bash
@@ -55,6 +41,4 @@ claude
 
 ## 注意事項
 
-- `ANTHROPIC_API_KEY` はローカルの環境変数から自動的にコンテナに引き渡されます
 - `.claude` フォルダもローカルとコンテナ間で共有されます（認証情報・設定の共有）
-- APIキーは絶対にコードにハードコードしないでください
