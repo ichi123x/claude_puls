@@ -1,3 +1,17 @@
+# PROJ_ClaudePulse
+
+Claude Code が現在使用しているモデル名とトークン使用量を、心電図風のパルスメータでリアルタイム表示する Windows デスクトップツール（C++ / MFC）です。
+
+## ClaudePulse のビルド・実行（Dev Container 外の Windows で行う）
+
+1. Windows 上で `ClaudePulse.sln` を Visual Studio 2022 で開く（「C++ による MFC デスクトップ開発」ワークロードが必要）
+2. 構成 `Debug | x64` または `Release | x64` を選択してビルド
+3. `ClaudePulse.exe` を起動すると、`%USERPROFILE%\.claude\projects` 配下の最新セッション記録（*.jsonl）を1秒間隔で監視し、モデル名・トークン使用量・消費レートを表示します
+
+仕様・設計は [.steering/](.steering/)、タスクは [tasks/tasklist.md](tasks/tasklist.md) を参照してください。
+
+---
+
 # Node.js + Claude Code Dev Container
 
 Node.js と Claude Code がプリインストールされた開発コンテナのベーステンプレートです。

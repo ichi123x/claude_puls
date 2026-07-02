@@ -1,0 +1,132 @@
+// Microsoft Visual C++ generated resource script.
+//
+// NOTE: This file is ASCII-only on purpose (see .steering/decisions.md ADR-005).
+//       Japanese UI strings are set at runtime in CClaudePulseDlg::OnInitDialog().
+//
+#include "Resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE
+BEGIN
+    "Resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CLAUDEPULSE_DIALOG DIALOGEX 0, 0, 360, 296
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "ClaudePulse"
+FONT 9, "Segoe UI", 400, 0, 0x1
+BEGIN
+    CTEXT           "-", IDC_STATIC_MODEL, 10, 8, 340, 16
+    CONTROL         "", IDC_PULSE_METER, "Static", SS_LEFT, 10, 28, 340, 96
+    LTEXT           "Input:", IDC_STATIC_INPUT_LABEL, 10, 132, 68, 10
+    RTEXT           "0", IDC_STATIC_INPUT, 80, 132, 84, 10
+    LTEXT           "Output:", IDC_STATIC_OUTPUT_LABEL, 186, 132, 68, 10
+    RTEXT           "0", IDC_STATIC_OUTPUT, 256, 132, 94, 10
+    LTEXT           "Cache read:", IDC_STATIC_CACHE_R_LABEL, 10, 146, 68, 10
+    RTEXT           "0", IDC_STATIC_CACHE_R, 80, 146, 84, 10
+    LTEXT           "Cache write:", IDC_STATIC_CACHE_C_LABEL, 186, 146, 68, 10
+    RTEXT           "0", IDC_STATIC_CACHE_C, 256, 146, 94, 10
+    LTEXT           "Total:", IDC_STATIC_TOTAL_LABEL, 10, 162, 68, 10
+    RTEXT           "0", IDC_STATIC_TOTAL, 80, 162, 84, 10
+    LTEXT           "Rate:", IDC_STATIC_RATE_LABEL, 186, 162, 68, 10
+    RTEXT           "0 tok/s", IDC_STATIC_RATE, 256, 162, 94, 10
+    LTEXT           "Plan usage limits", IDC_STATIC_LIMIT_HEADER, 10, 180, 150, 10
+    RTEXT           "", IDC_STATIC_LIMIT_STATUS, 166, 180, 184, 10
+    LTEXT           "Current session", IDC_STATIC_SESSION_LABEL, 10, 194, 340, 10
+    CONTROL         "", IDC_BAR_SESSION, "Static", SS_LEFT, 10, 206, 268, 8
+    RTEXT           "-", IDC_STATIC_SESSION_PCT, 284, 205, 66, 10
+    LTEXT           "Weekly (all models)", IDC_STATIC_WEEK_ALL_LABEL, 10, 222, 340, 10
+    CONTROL         "", IDC_BAR_WEEK_ALL, "Static", SS_LEFT, 10, 234, 268, 8
+    RTEXT           "-", IDC_STATIC_WEEK_ALL_PCT, 284, 233, 66, 10
+    LTEXT           "Weekly (model)", IDC_STATIC_WEEK_MODEL_LABEL, 10, 250, 340, 10
+    CONTROL         "", IDC_BAR_WEEK_MODEL, "Static", SS_LEFT, 10, 262, 268, 8
+    RTEXT           "-", IDC_STATIC_WEEK_MODEL_PCT, 284, 261, 66, 10
+    LTEXT           "", IDC_STATIC_FILE, 10, 280, 340, 10, SS_PATHELLIPSIS
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041104b0"
+        BEGIN
+            VALUE "CompanyName", "PROJ_ClaudePulse"
+            VALUE "FileDescription", "ClaudePulse - Claude Code usage monitor"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "ClaudePulse.exe"
+            VALUE "LegalCopyright", "(C) 2026 PROJ_ClaudePulse"
+            VALUE "OriginalFilename", "ClaudePulse.exe"
+            VALUE "ProductName", "ClaudePulse"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x411, 1200
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
