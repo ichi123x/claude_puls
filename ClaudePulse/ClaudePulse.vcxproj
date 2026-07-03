@@ -100,6 +100,7 @@
     <ClInclude Include="JsonLite.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PulseMeterCtrl.h" />
+    <ClInclude Include="RadioDotCtrl.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UsageBarCtrl.h" />
@@ -114,6 +115,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PulseMeterCtrl.cpp" />
+    <ClCompile Include="RadioDotCtrl.cpp" />
     <ClCompile Include="UsageBarCtrl.cpp" />
     <ClCompile Include="UsageLimitsClient.cpp" />
     <ClCompile Include="UsageMonitor.cpp" />

@@ -19,7 +19,7 @@ struct UsageSection
 	bool   present = false;    // 応答にこの区分が含まれていたか
 	double utilization = 0.0;  // 使用率（0〜100）
 	bool   hasReset = false;   // リセット時刻を取得できたか
-	CTime  resetTime;          // リセット時刻（ローカル時刻）
+	CTime  resetTime = CTime(0);  // リセット時刻（ローカル時刻）
 };
 
 // 使用量エンドポイントの取得結果
@@ -32,7 +32,7 @@ struct UsageLimitsResult
 	UsageSection sevenDay;      // 週間制限（すべてのモデル）
 	UsageSection sevenDayModel; // 週間制限（特定モデル階級）
 	CString sevenDayModelLabel; // 上記のラベル（Fable / Opus）
-	CTime   fetchedAt;          // 取得時刻
+	CTime   fetchedAt = CTime(0); // 取得時刻
 };
 
 class CUsageLimitsClient

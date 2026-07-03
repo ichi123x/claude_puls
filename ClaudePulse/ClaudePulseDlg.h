@@ -6,6 +6,7 @@
 #include "UsageBarCtrl.h"
 #include "UsageMonitor.h"
 #include "UsageLimitsClient.h"
+#include "RadioDotCtrl.h"
 
 // 使用量取得スレッド → UIスレッドへの結果通知メッセージ
 // （LPARAM に new した UsageLimitsResult* を渡し、受信側で解放する）
@@ -30,6 +31,8 @@ protected:
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnDestroy();
 	afx_msg LRESULT OnUsageUpdated(WPARAM wParam, LPARAM lParam);
+	afx_msg void OnClickedRadioTopMost();
+	afx_msg void OnClickedRadioNormal();
 	DECLARE_MESSAGE_MAP()
 
 private:
@@ -52,6 +55,9 @@ private:
 	// ワーカースレッド本体（UsageLimitsClient::Fetch を実行して結果を PostMessage する）
 	static UINT AFX_CDECL UsageFetchThread(LPVOID pParam);
 
+	// ウィンドウの最前面表示を切り替える（ADR-007）
+	void ApplyAlwaysOnTop(bool topMost);
+
 	// 3桁区切りの文字列にする（例: 1234567 → "1,234,567"）
 	static CString FormatWithCommas(ULONGLONG value);
 
@@ -59,6 +65,8 @@ private:
 	CUsageBarCtrl   m_barSession;    // 現在のセッションの使用率バー
 	CUsageBarCtrl   m_barWeekAll;    // 週間（すべてのモデル）の使用率バー
 	CUsageBarCtrl   m_barWeekModel;  // 週間（特定モデル階級）の使用率バー
+	CRadioDotCtrl   m_radioTopMost;  // 「最前面に表示」ラジオボタン
+	CRadioDotCtrl   m_radioNormal;   // 「通常表示」ラジオボタン
 	CUsageMonitor   m_monitor;       // JSONL 監視・集計
 	CFont           m_modelFont;     // モデル名表示用の大きめフォント
 	CBrush          m_backBrush;     // ダークテーマ背景ブラシ

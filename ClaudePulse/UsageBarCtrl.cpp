@@ -91,11 +91,16 @@ void CUsageBarCtrl::OnPaint()
 				// 角丸が潰れないよう最小幅を確保する
 				width = (std::max)(width, rc.Height());
 
+				// fillBrush/fillPen はこのブロック内だけで使う。ブロックを抜けて
+				// 破棄される前に、選択状態を必ず元へ戻しておく（選択中のGDIオブジェクトを
+				// 破棄するとデバッグアサーションの原因になる）
 				CBrush fillBrush(fill);
 				CPen fillPen(PS_SOLID, 1, fill);
 				memDC.SelectObject(&fillBrush);
 				memDC.SelectObject(&fillPen);
 				memDC.RoundRect(rc.left, rc.top, rc.left + width, rc.bottom, radius, radius);
+				memDC.SelectObject(pOldBrush);
+				memDC.SelectObject(pOldPen);
 			}
 		}
 

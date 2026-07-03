@@ -47,7 +47,7 @@ END
 // Dialog
 //
 
-IDD_CLAUDEPULSE_DIALOG DIALOGEX 0, 0, 360, 296
+IDD_CLAUDEPULSE_DIALOG DIALOGEX 0, 0, 360, 316
 STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "ClaudePulse"
@@ -78,7 +78,10 @@ BEGIN
     LTEXT           "Weekly (model)", IDC_STATIC_WEEK_MODEL_LABEL, 10, 250, 340, 10
     CONTROL         "", IDC_BAR_WEEK_MODEL, "Static", SS_LEFT, 10, 262, 268, 8
     RTEXT           "-", IDC_STATIC_WEEK_MODEL_PCT, 284, 261, 66, 10
-    LTEXT           "", IDC_STATIC_FILE, 10, 280, 340, 10, SS_PATHELLIPSIS
+    LTEXT           "Window:", IDC_STATIC_WINDOW_LABEL, 10, 282, 68, 12
+    CONTROL         "TopMost", IDC_RADIO_TOPMOST, "Static", SS_LEFT | SS_NOTIFY, 84, 280, 120, 14
+    CONTROL         "Normal", IDC_RADIO_NORMAL, "Static", SS_LEFT | SS_NOTIFY, 210, 280, 120, 14
+    LTEXT           "", IDC_STATIC_FILE, 10, 300, 340, 10, SS_PATHELLIPSIS
 END
 
 /////////////////////////////////////////////////////////////////////////////

@@ -36,6 +36,10 @@ BOOL CClaudePulseApp::InitInstance()
 
 	CWinApp::InitInstance();
 
+	// ウィンドウ表示設定（最前面／通常）の永続化先
+	// （HKCU\Software\PROJ_ClaudePulse\ClaudePulse\Settings。ADR-007）
+	SetRegistryKey(_T("PROJ_ClaudePulse"));
+
 	CClaudePulseDlg dlg;
 	m_pMainWnd = &dlg;
 	dlg.DoModal();

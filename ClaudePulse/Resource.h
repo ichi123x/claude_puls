@@ -1,5 +1,9 @@
 //{{NO_DEPENDENCIES}}
-// ClaudePulse.rc で使用されるリソースID定義
+// Resource ID definitions used by ClaudePulse.rc
+// NOTE: This file is ASCII-only on purpose. It is #included from ClaudePulse.rc,
+// and rc.exe's preprocessor can misread non-ASCII (e.g. UTF-8 without BOM,
+// depending on the system ANSI code page) and corrupt subsequent #define lines
+// (see .steering/decisions.md ADR-005).
 //
 #define IDD_CLAUDEPULSE_DIALOG          102
 
@@ -19,7 +23,7 @@
 #define IDC_STATIC_RATE                 1014
 #define IDC_STATIC_FILE                 1015
 
-// プラン使用制限セクション（Claude Desktop 風表示）
+// Plan usage limits section (Claude Desktop style display)
 #define IDC_STATIC_LIMIT_HEADER         1016
 #define IDC_STATIC_LIMIT_STATUS         1017
 #define IDC_STATIC_SESSION_LABEL        1018
@@ -32,12 +36,17 @@
 #define IDC_BAR_WEEK_MODEL              1025
 #define IDC_STATIC_WEEK_MODEL_PCT       1026
 
-// 新しいオブジェクトの次の既定値
+// Window always-on-top toggle (ADR-007)
+#define IDC_STATIC_WINDOW_LABEL         1027
+#define IDC_RADIO_TOPMOST               1028
+#define IDC_RADIO_NORMAL                1029
+
+// Next default values for new objects
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        129
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1027
+#define _APS_NEXT_CONTROL_VALUE         1030
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

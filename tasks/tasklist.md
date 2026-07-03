@@ -21,10 +21,10 @@
 - [x] 🟡 命名規則・コーディング規約を決める
 - [x] 🟢 `decisions.md` に初期設計判断を記録する（ADR-001〜005）
 
-## フェーズ3：実装
+## フェーズ3：実装（仕様は同一のまま実装をゼロから書き直し済み）
 
 - [x] 🔴 ソリューション・プロジェクトファイルを作成する（`ClaudePulse.sln` / `ClaudePulse.vcxproj`、x64 / Unicode / MFC共有DLL / C++17 / `/utf-8`）
-- [x] 🔴 リソースを作成する（`Resource.h` / `ClaudePulse.rc`：メインダイアログ・バージョン情報）
+- [x] 🔴 リソースを作成する（`Resource.h` / `ClaudePulse.rc`：メインダイアログ・バージョン情報。`Resource.h` はASCIIのみ）
 - [x] 🔴 アプリ骨格を実装する（`pch` / `framework.h` / `targetver.h` / `ClaudePulse.h/.cpp`）
 - [x] 🔴 使用量監視を実装する（`UsageMonitor.h/.cpp`：最新JSONL特定・追尾読み・model/usage抽出・集計）
 - [x] 🔴 パルスメータを実装する（`PulseMeterCtrl.h/.cpp`：ダブルバッファ・心電図風波形・対数正規化）
@@ -35,6 +35,11 @@
   - [x] 使用量エンドポイントの取得を実装（`UsageLimitsClient.h/.cpp`：credentials.json 読取・WinHTTP・ISO8601解析）
   - [x] 使用率プログレスバーを実装（`UsageBarCtrl.h/.cpp`：角丸バー・70%/90% で色変化）
   - [x] ダイアログに使用制限セクションを追加（3行のバー表示・60秒間隔・ワーカースレッド取得）
+- [x] 🟡 最前面表示／通常表示のラジオボタンを追加する（ADR-007）
+  - [x] `Resource.h` / `ClaudePulse.rc` にラジオボタン2つとラベルを追加する
+  - [x] `ClaudePulseDlg` にクリックハンドラーを実装し `SetWindowPos` でZオーダーを切り替える
+  - [x] 標準ボタンがダークテーマで見えない問題を修正（`RadioDotCtrl` による自前描画に変更）
+  - [x] 選択状態をレジストリへ永続化し、次回起動時に復元する（既定は「最前面に表示」）
 
 ## フェーズ4：テスト・確認
 

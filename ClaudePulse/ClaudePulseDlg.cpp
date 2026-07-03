@@ -44,6 +44,8 @@ void CClaudePulseDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BAR_SESSION, m_barSession);
 	DDX_Control(pDX, IDC_BAR_WEEK_ALL, m_barWeekAll);
 	DDX_Control(pDX, IDC_BAR_WEEK_MODEL, m_barWeekModel);
+	DDX_Control(pDX, IDC_RADIO_TOPMOST, m_radioTopMost);
+	DDX_Control(pDX, IDC_RADIO_NORMAL, m_radioNormal);
 }
 
 BEGIN_MESSAGE_MAP(CClaudePulseDlg, CDialogEx)
@@ -51,6 +53,8 @@ BEGIN_MESSAGE_MAP(CClaudePulseDlg, CDialogEx)
 	ON_WM_CTLCOLOR()
 	ON_WM_DESTROY()
 	ON_MESSAGE(WM_APP_USAGE_UPDATED, &CClaudePulseDlg::OnUsageUpdated)
+	ON_BN_CLICKED(IDC_RADIO_TOPMOST, &CClaudePulseDlg::OnClickedRadioTopMost)
+	ON_BN_CLICKED(IDC_RADIO_NORMAL, &CClaudePulseDlg::OnClickedRadioNormal)
 END_MESSAGE_MAP()
 
 // CClaudePulseDlg メッセージ ハンドラー
@@ -85,6 +89,17 @@ BOOL CClaudePulseDlg::OnInitDialog()
 	SetDlgItemText(IDC_STATIC_SESSION_PCT, L"—");
 	SetDlgItemText(IDC_STATIC_WEEK_ALL_PCT, L"—");
 	SetDlgItemText(IDC_STATIC_WEEK_MODEL_PCT, L"—");
+
+	// ウィンドウの最前面表示切り替え（ADR-007）。
+	// 前回終了時の選択を復元する。未保存（初回起動）の既定値は「最前面に表示」
+	SetDlgItemText(IDC_STATIC_WINDOW_LABEL, L"ウィンドウ表示：");
+	SetDlgItemText(IDC_RADIO_TOPMOST, L"最前面に表示");
+	SetDlgItemText(IDC_RADIO_NORMAL, L"通常表示");
+
+	bool topMost = theApp.GetProfileInt(L"Settings", L"AlwaysOnTop", 1) != 0;
+	m_radioTopMost.SetChecked(topMost);
+	m_radioNormal.SetChecked(!topMost);
+	ApplyAlwaysOnTop(topMost);
 
 	// 監視の初期化。projects フォルダが無くてもエラーにせず待機表示とする
 	if (m_monitor.Initialize())
@@ -351,6 +366,29 @@ HBRUSH CClaudePulseDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	}
 
 	return hbr;
+}
+
+void CClaudePulseDlg::OnClickedRadioTopMost()
+{
+	m_radioTopMost.SetChecked(true);
+	m_radioNormal.SetChecked(false);
+	ApplyAlwaysOnTop(true);
+	theApp.WriteProfileInt(L"Settings", L"AlwaysOnTop", 1);
+}
+
+void CClaudePulseDlg::OnClickedRadioNormal()
+{
+	m_radioTopMost.SetChecked(false);
+	m_radioNormal.SetChecked(true);
+	ApplyAlwaysOnTop(false);
+	theApp.WriteProfileInt(L"Settings", L"AlwaysOnTop", 0);
+}
+
+void CClaudePulseDlg::ApplyAlwaysOnTop(bool topMost)
+{
+	// wndTopMost / wndNoTopMost は MFC が用意する定数CWnd（HWND_TOPMOST / HWND_NOTOPMOST 相当）
+	SetWindowPos(topMost ? &wndTopMost : &wndNoTopMost, 0, 0, 0, 0,
+		SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
 }
 
 void CClaudePulseDlg::OnDestroy()

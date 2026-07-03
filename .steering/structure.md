@@ -38,6 +38,7 @@ claude_puls/
     ├── UsageMonitor.h / .cpp    … JSONL 監視・使用量集計
     ├── UsageLimitsClient.h/.cpp … プラン使用制限の取得（WinHTTP・ADR-006）
     ├── UsageBarCtrl.h / .cpp    … 使用率プログレスバー（CStatic派生・自前描画）
+    ├── RadioDotCtrl.h / .cpp    … 最前面表示切替の円形ラジオボタン（CStatic派生・自前描画。ADR-007）
     └── JsonLite.h               … 軽量JSON値抽出ヘルパー（共通）
 ```
 

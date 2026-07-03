@@ -6,6 +6,7 @@
 
 #include "framework.h"
 #include <afxdialogex.h>    // CDialogEx
+#include <atlconv.h>        // CA2W 等の文字コード変換マクロ（UsageMonitor / UsageLimitsClient で使用）
 
 #include <string>
 #include <vector>
