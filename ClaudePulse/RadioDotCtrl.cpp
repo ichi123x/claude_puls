@@ -16,7 +16,7 @@ namespace
 	const COLORREF kColorDot = RGB(64, 224, 144);   // 選択時の中心ドット（緑）
 	const COLORREF kColorText = RGB(230, 235, 245); // ラベル文字
 
-	const int kDiameter = 12; // 円の直径（ピクセル）
+	const int kDiameter = 12; // 円の直径の上限（ピクセル）。縮小表示時はコントロール高さに合わせる
 }
 
 BEGIN_MESSAGE_MAP(CRadioDotCtrl, CStatic)
@@ -62,8 +62,10 @@ void CRadioDotCtrl::OnPaint()
 	dc.FillSolidRect(&rc, kColorBack);
 	dc.SetBkMode(TRANSPARENT);
 
-	int top = rc.top + (rc.Height() - kDiameter) / 2;
-	CRect ring(rc.left, top, rc.left + kDiameter, top + kDiameter);
+	// 表示サイズ「小」でコントロールが低くなっても円がはみ出さないようにする
+	int diameter = (rc.Height() < kDiameter) ? rc.Height() : kDiameter;
+	int top = rc.top + (rc.Height() - diameter) / 2;
+	CRect ring(rc.left, top, rc.left + diameter, top + diameter);
 
 	// 円の輪（塗りつぶしなし）。生のGDIハンドルを使い、選択解除→削除の順序を
 	// 確実に守る（選択中のGDIオブジェクトを破棄するとデバッグアサーションの原因になる）
@@ -78,8 +80,10 @@ void CRadioDotCtrl::OnPaint()
 
 	if (m_checked)
 	{
+		// 中心ドットの余白は直径に比例させる（12px時に3px相当）
 		CRect dot(ring);
-		dot.DeflateRect(3, 3);
+		int inset = (diameter + 2) / 4;
+		dot.DeflateRect(inset, inset);
 
 		HBRUSH hDotBrush = ::CreateSolidBrush(kColorDot);
 		HGDIOBJ hOldDotBrush = ::SelectObject(hdc, hDotBrush);
@@ -90,11 +94,18 @@ void CRadioDotCtrl::OnPaint()
 		::DeleteObject(hDotBrush);
 	}
 
+	// ラベルはコントロールに設定されたフォントで描く（表示サイズ切替に追従させる）
 	CString label;
 	GetWindowText(label);
 	CRect textRc(ring.right + 6, rc.top, rc.right, rc.bottom);
+	CFont* pFont = GetFont();
+	CFont* pOldFont = (pFont != nullptr) ? dc.SelectObject(pFont) : nullptr;
 	dc.SetTextColor(kColorText);
 	dc.DrawText(label, textRc, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+	if (pOldFont != nullptr)
+	{
+		dc.SelectObject(pOldFont);
+	}
 }
 
 void CRadioDotCtrl::OnLButtonDown(UINT nFlags, CPoint point)

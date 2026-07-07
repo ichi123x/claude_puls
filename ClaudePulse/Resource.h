@@ -37,16 +37,29 @@
 #define IDC_STATIC_WEEK_MODEL_PCT       1026
 
 // Window always-on-top toggle (ADR-007)
-#define IDC_STATIC_WINDOW_LABEL         1027
 #define IDC_RADIO_TOPMOST               1028
 #define IDC_RADIO_NORMAL                1029
+
+// Section group boxes (window settings on top, usage monitor below)
+#define IDC_GROUP_WINDOW                1030
+#define IDC_GROUP_MONITOR               1031
+
+// Display size section (small = quarter area of medium)
+#define IDC_GROUP_SIZE                  1032
+#define IDC_RADIO_SIZE_SMALL            1033
+#define IDC_RADIO_SIZE_MEDIUM           1034
+
+// Detail display section (off = hide token stats and plan usage limits)
+#define IDC_GROUP_DETAIL                1035
+#define IDC_RADIO_DETAIL_OFF            1036
+#define IDC_RADIO_DETAIL_ON             1037
 
 // Next default values for new objects
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        129
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1030
+#define _APS_NEXT_CONTROL_VALUE         1038
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

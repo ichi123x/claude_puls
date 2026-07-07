@@ -47,41 +47,48 @@ END
 // Dialog
 //
 
-IDD_CLAUDEPULSE_DIALOG DIALOGEX 0, 0, 360, 316
+IDD_CLAUDEPULSE_DIALOG DIALOGEX 0, 0, 360, 306
 STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "ClaudePulse"
 FONT 9, "Segoe UI", 400, 0, 0x1
 BEGIN
-    CTEXT           "-", IDC_STATIC_MODEL, 10, 8, 340, 16
-    CONTROL         "", IDC_PULSE_METER, "Static", SS_LEFT, 10, 28, 340, 96
-    LTEXT           "Input:", IDC_STATIC_INPUT_LABEL, 10, 132, 68, 10
-    RTEXT           "0", IDC_STATIC_INPUT, 80, 132, 84, 10
+    GROUPBOX        "Priority", IDC_GROUP_WINDOW, 6, 4, 112, 34
+    CONTROL         "TopMost", IDC_RADIO_TOPMOST, "Static", SS_LEFT | SS_NOTIFY, 14, 18, 48, 14
+    CONTROL         "Normal", IDC_RADIO_NORMAL, "Static", SS_LEFT | SS_NOTIFY, 64, 18, 48, 14
+    GROUPBOX        "Size", IDC_GROUP_SIZE, 124, 4, 112, 34
+    CONTROL         "Small", IDC_RADIO_SIZE_SMALL, "Static", SS_LEFT | SS_NOTIFY, 132, 18, 48, 14
+    CONTROL         "Medium", IDC_RADIO_SIZE_MEDIUM, "Static", SS_LEFT | SS_NOTIFY, 182, 18, 48, 14
+    GROUPBOX        "Detail", IDC_GROUP_DETAIL, 242, 4, 112, 34
+    CONTROL         "Off", IDC_RADIO_DETAIL_OFF, "Static", SS_LEFT | SS_NOTIFY, 250, 18, 48, 14
+    CONTROL         "On", IDC_RADIO_DETAIL_ON, "Static", SS_LEFT | SS_NOTIFY, 300, 18, 48, 14
+    GROUPBOX        "Usage", IDC_GROUP_MONITOR, 6, 42, 348, 258
+    CTEXT           "-", IDC_STATIC_MODEL, 14, 56, 332, 16
+    CONTROL         "", IDC_PULSE_METER, "Static", SS_LEFT, 14, 76, 332, 48
+    LTEXT           "Input:", IDC_STATIC_INPUT_LABEL, 14, 132, 68, 10
+    RTEXT           "0", IDC_STATIC_INPUT, 84, 132, 80, 10
     LTEXT           "Output:", IDC_STATIC_OUTPUT_LABEL, 186, 132, 68, 10
-    RTEXT           "0", IDC_STATIC_OUTPUT, 256, 132, 94, 10
-    LTEXT           "Cache read:", IDC_STATIC_CACHE_R_LABEL, 10, 146, 68, 10
-    RTEXT           "0", IDC_STATIC_CACHE_R, 80, 146, 84, 10
+    RTEXT           "0", IDC_STATIC_OUTPUT, 256, 132, 86, 10
+    LTEXT           "Cache read:", IDC_STATIC_CACHE_R_LABEL, 14, 146, 68, 10
+    RTEXT           "0", IDC_STATIC_CACHE_R, 84, 146, 80, 10
     LTEXT           "Cache write:", IDC_STATIC_CACHE_C_LABEL, 186, 146, 68, 10
-    RTEXT           "0", IDC_STATIC_CACHE_C, 256, 146, 94, 10
-    LTEXT           "Total:", IDC_STATIC_TOTAL_LABEL, 10, 162, 68, 10
-    RTEXT           "0", IDC_STATIC_TOTAL, 80, 162, 84, 10
+    RTEXT           "0", IDC_STATIC_CACHE_C, 256, 146, 86, 10
+    LTEXT           "Total:", IDC_STATIC_TOTAL_LABEL, 14, 162, 68, 10
+    RTEXT           "0", IDC_STATIC_TOTAL, 84, 162, 80, 10
     LTEXT           "Rate:", IDC_STATIC_RATE_LABEL, 186, 162, 68, 10
-    RTEXT           "0 tok/s", IDC_STATIC_RATE, 256, 162, 94, 10
-    LTEXT           "Plan usage limits", IDC_STATIC_LIMIT_HEADER, 10, 180, 150, 10
-    RTEXT           "", IDC_STATIC_LIMIT_STATUS, 166, 180, 184, 10
-    LTEXT           "Current session", IDC_STATIC_SESSION_LABEL, 10, 194, 340, 10
-    CONTROL         "", IDC_BAR_SESSION, "Static", SS_LEFT, 10, 206, 268, 8
-    RTEXT           "-", IDC_STATIC_SESSION_PCT, 284, 205, 66, 10
-    LTEXT           "Weekly (all models)", IDC_STATIC_WEEK_ALL_LABEL, 10, 222, 340, 10
-    CONTROL         "", IDC_BAR_WEEK_ALL, "Static", SS_LEFT, 10, 234, 268, 8
-    RTEXT           "-", IDC_STATIC_WEEK_ALL_PCT, 284, 233, 66, 10
-    LTEXT           "Weekly (model)", IDC_STATIC_WEEK_MODEL_LABEL, 10, 250, 340, 10
-    CONTROL         "", IDC_BAR_WEEK_MODEL, "Static", SS_LEFT, 10, 262, 268, 8
-    RTEXT           "-", IDC_STATIC_WEEK_MODEL_PCT, 284, 261, 66, 10
-    LTEXT           "Window:", IDC_STATIC_WINDOW_LABEL, 10, 282, 68, 12
-    CONTROL         "TopMost", IDC_RADIO_TOPMOST, "Static", SS_LEFT | SS_NOTIFY, 84, 280, 120, 14
-    CONTROL         "Normal", IDC_RADIO_NORMAL, "Static", SS_LEFT | SS_NOTIFY, 210, 280, 120, 14
-    LTEXT           "", IDC_STATIC_FILE, 10, 300, 340, 10, SS_PATHELLIPSIS
+    RTEXT           "0 tok/s", IDC_STATIC_RATE, 256, 162, 86, 10
+    LTEXT           "Plan usage limits", IDC_STATIC_LIMIT_HEADER, 14, 180, 150, 10
+    RTEXT           "", IDC_STATIC_LIMIT_STATUS, 166, 180, 176, 10
+    LTEXT           "Current session", IDC_STATIC_SESSION_LABEL, 14, 194, 332, 10
+    CONTROL         "", IDC_BAR_SESSION, "Static", SS_LEFT, 14, 206, 264, 8
+    RTEXT           "-", IDC_STATIC_SESSION_PCT, 284, 205, 62, 10
+    LTEXT           "Weekly (all models)", IDC_STATIC_WEEK_ALL_LABEL, 14, 222, 332, 10
+    CONTROL         "", IDC_BAR_WEEK_ALL, "Static", SS_LEFT, 14, 234, 264, 8
+    RTEXT           "-", IDC_STATIC_WEEK_ALL_PCT, 284, 233, 62, 10
+    LTEXT           "Weekly (model)", IDC_STATIC_WEEK_MODEL_LABEL, 14, 250, 332, 10
+    CONTROL         "", IDC_BAR_WEEK_MODEL, "Static", SS_LEFT, 14, 262, 264, 8
+    RTEXT           "-", IDC_STATIC_WEEK_MODEL_PCT, 284, 261, 62, 10
+    LTEXT           "", IDC_STATIC_FILE, 14, 282, 332, 10, SS_PATHELLIPSIS
 END
 
 /////////////////////////////////////////////////////////////////////////////
